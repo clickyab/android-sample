@@ -3,9 +3,20 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="btnStyleSandrift" parent="@android:style/Widget.Button">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#916312</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">#f60</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:shadowColor">#55ffffff</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">3</item>
     </style>
 
 </resources>
