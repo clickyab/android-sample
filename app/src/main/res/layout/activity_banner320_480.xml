@@ -12,7 +12,7 @@
 
     <com.clickyab.XlargeBannerPortrait
         android:id="@+id/xlargeBannerPortrait"
-        token="token"
+        token="14dfcf577a0ac50d58b73ef2d2b9101a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

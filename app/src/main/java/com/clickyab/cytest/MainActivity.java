@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
         btnFull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ClickYabFullAd myads = new ClickYabFullAd(MainActivity.this , "token",
+                final ClickYabFullAd myads = new ClickYabFullAd(MainActivity.this , "14dfcf577a0ac50d58b73ef2d2b9101a",
                 new ClickYabAdListener() {
                     @Override
                     public void onNoAds() {
