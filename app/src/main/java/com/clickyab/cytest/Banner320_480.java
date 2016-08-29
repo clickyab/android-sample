@@ -21,11 +21,15 @@ public class Banner320_480 extends Activity {
             @Override
             public void onNoAds() {
                 Toast.makeText(getApplicationContext(), "این سایز بنر حاوی تبلیغ نمی باشد", Toast.LENGTH_LONG).show();
+                Banner320_480.this.finish();
+                startActivity(new Intent(Banner320_480.this, MainActivity.class));
             }
 
             @Override
             public void onClose() {
                 Toast.makeText(getApplicationContext(),"بنر در حال بسته شدن است",Toast.LENGTH_SHORT).show();
+                Banner320_480.this.finish();
+                startActivity(new Intent(Banner320_480.this, MainActivity.class));
             }
 
             @Override
