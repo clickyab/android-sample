@@ -1,0 +1,2 @@
+* ClickYab Sample App for Android
+Check documents at https://www.clickyab.com/blog/clickyab-android-sdk-document/
