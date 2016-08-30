@@ -1,7 +1,7 @@
 #+TITLE: ClickYab Sample App for Android
 
 * How To Use ClickYab SDK In Your Project
-Download the AAR library from [[https://github.com/psamim/android-sample/raw/master/clickyab-1.2/clickyab-1.2.0.aar][here]] and add it to your project:
+Download the AAR library from [[https://github.com/clickyab/android-sample/releases/download/1.2.0/clickyab-1.2.0.aar][here]] and add it to your project:
 
 1. Go to File>New>New Module
 2. Select "Import .JAR/.AAR Package" and click next.
