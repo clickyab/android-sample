@@ -1,2 +1,73 @@
-* ClickYab Sample App for Android
-Check documents at https://www.clickyab.com/blog/clickyab-android-sdk-document/
+#+TITLE: ClickYab Sample App for Android
+
+* How To Use ClickYab SDK In Your Project
+Download the AAR library from [[https://github.com/psamim/android-sample/raw/master/clickyab-1.2/clickyab-1.2.0.aar][here]] and add it to your project:
+
+1. Go to File>New>New Module
+2. Select "Import .JAR/.AAR Package" and click next.
+3. Enter the path to .aar file and click finish.
+4. Go to File>Project Settings (Ctrl+Shift+Alt+S).
+5. Under "Modules," in left menu, select "app."
+6. Go to "Dependencies tab.
+7. Click the green "+" in the upper right corner.
+8. Select "Module Dependency"
+9. Select the new module from the list.
+
+Add one one the three size of banners to you layout. Remember to put your token.
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
+          
+#+BEGIN_SRC xml
+<com.clickyab.LargeBanner 
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      token="token"
+      /><!-- 300*250 dp -->
+#+END_SRC
+
+#+BEGIN_SRC xml
+<com.clickyab.XlargeBannerPortrait
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        token="token"
+        /><!-- 320*480 dp -->
+#+END_SRC
+
+You can also add listeners to banners.
+
+#+BEGIN_SRC java
+  largeBanner = (LargeBanner) findViewById(R.id.largeBanner);
+  largeBanner.setClickYabAdListener(new ClickYabAdListener() {
+          @Override
+          public void onNoAds() {
+           // Called when there is no ads to display
+          }
+
+          @Override
+          public void onClose() {
+            // Called when user closes the ad
+          }
+
+          @Override
+          public void onOpen() {
+           // Called when loading the ad
+          }
+      });
+  }
+#+END_SRC
+
+For fulscreen banner, create one and call the method =show=.
+
+#+BEGIN_SRC java
+  ClickYabFullAd banner = new ClickYabFullAd(getContext() , "token");
+  banner.show();
+#+END_SRC
+
+* Warning 
+Documents at https://www.clickyab.com/blog/clickyab-android-sdk-document/ are *outdated* and will be updated soon.
