@@ -1,7 +1,7 @@
 #+TITLE: ClickYab Sample App for Android
 
-* How To Use ClickYab SDK In Your Project
-Download the AAR library from [[https://github.com/psamim/android-sample/raw/master/clickyab-1.2/clickyab-1.2.0.aar][here]] and add it to your project:
+* How To Add ClickYab SDK to Your Project
+Download the *AAR* library from [[https://github.com/clickyab/android-sample/releases/download/1.2.1/clickyab-1.2.1.aar][here]] and add it to your project:
 
 1. Go to File>New>New Module
 2. Select "Import .JAR/.AAR Package" and click next.
@@ -12,7 +12,12 @@ Download the AAR library from [[https://github.com/psamim/android-sample/raw/mas
 7. Click the green "+" in the upper right corner.
 8. Select "Module Dependency"
 9. Select the new module from the list.
+   
 
+If you need the *JAR* format (not recommended) download it from [[https://github.com/clickyab/android-sample/releases/download/1.2.1/clickyab.1.2.1.jar][here]]. 
+The JAR format does not have the progress indicator by default, but you can provide you own (see /Customizing/).
+
+* How to Use
 Add one one the three size of banners to you layout. Remember to put your token.
 
   #+BEGIN_SRC xml
@@ -39,6 +44,14 @@ Add one one the three size of banners to you layout. Remember to put your token.
         /><!-- 320*480 dp -->
 #+END_SRC
 
+For fulscreen banner, create one and call the method =show=.
+
+#+BEGIN_SRC java
+  ClickYabFullAd banner = new ClickYabFullAd(getContext() , "token");
+  banner.show();
+#+END_SRC
+
+* Adding listeners
 You can also add listeners to banners.
 
 #+BEGIN_SRC java
@@ -62,11 +75,20 @@ You can also add listeners to banners.
   }
 #+END_SRC
 
-For fulscreen banner, create one and call the method =show=.
+* Customizing
+You can disable the progress indicator:
 
 #+BEGIN_SRC java
-  ClickYabFullAd banner = new ClickYabFullAd(getContext() , "token");
-  banner.show();
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setProgressDrawable();
+  banner.setHasProgressBar(false);
+#+END_SRC
+
+You can provide your own progress indicator drawable:
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setProgressDrawable(getDrawable(R.id.custom_drawable));
 #+END_SRC
 
 * Warning 
