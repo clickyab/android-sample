@@ -80,7 +80,6 @@ You can disable the progress indicator:
 
 #+BEGIN_SRC java
   XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
-  banner.setProgressDrawable();
   banner.setHasProgressBar(false);
 #+END_SRC
 
