@@ -60,6 +60,11 @@ You can also add listeners to banners.
   largeBanner = (LargeBanner) findViewById(R.id.largeBanner);
   largeBanner.setClickYabAdListener(new ClickYabAdListener() {
           @Override
+          public void onLoadFinished() {
+           // Called when loading is finished
+          }
+
+          @Override
           public void onNoAds() {
            // Called when there is no ads to display
           }
@@ -67,11 +72,6 @@ You can also add listeners to banners.
           @Override
           public void onClose() {
             // Called when user closes the ad
-          }
-
-          @Override
-          public void onOpen() {
-           // Called when loading the ad
           }
       });
   }
@@ -91,6 +91,42 @@ You can provide your own progress indicator drawable:
   XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
   banner.setProgressDrawable(getDrawable(R.id.custom_drawable));
 #+END_SRC
+
+You can set a timeout for loading ads. If the ad is not loaded after timeout, =onNoAds()= is called:
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setTimeOutSeconds(10);
+#+END_SRC
+
+Or using =timeout= in XML attribute:
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        timeout="10"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
+
+If there is no ads, visibility is automatically changed to =View.GONE= by default. You can change this by setting auto-hide to false;
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setAutoHide(false);
+#+END_SRC
+
+Or using =autohide= in XML attribute:
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        autohide="false"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
 
 * Warning 
 Documents at https://www.clickyab.com/blog/clickyab-android-sdk-document/ are *outdated* and will be updated soon.
