@@ -19,6 +19,11 @@ public class Banner320_480 extends Activity {
 
         banner.setClickYabAdListener(new ClickYabAdListener() {
             @Override
+            public void onLoadFinished() {
+                Toast.makeText(getApplicationContext(), "بنر حاوی تبلیغ است", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
             public void onNoAds() {
                 Toast.makeText(getApplicationContext(), "این سایز بنر حاوی تبلیغ نمی باشد", Toast.LENGTH_LONG).show();
                 Banner320_480.this.finish();
@@ -30,11 +35,6 @@ public class Banner320_480 extends Activity {
                 Toast.makeText(getApplicationContext(),"بنر در حال بسته شدن است",Toast.LENGTH_SHORT).show();
                 Banner320_480.this.finish();
                 startActivity(new Intent(Banner320_480.this, MainActivity.class));
-            }
-
-            @Override
-            public void onOpen() {
-                Toast.makeText(getApplicationContext(), "بنر حاوی تبلیغ است", Toast.LENGTH_LONG).show();
             }
         });
     }

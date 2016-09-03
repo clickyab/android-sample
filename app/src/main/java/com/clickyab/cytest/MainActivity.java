@@ -50,6 +50,11 @@ public class MainActivity extends Activity {
                 final ClickYabFullAd myads = new ClickYabFullAd(MainActivity.this , "14dfcf577a0ac50d58b73ef2d2b9101a",
                 new ClickYabAdListener() {
                     @Override
+                    public void onLoadFinished() {
+                        Toast.makeText(getApplicationContext(), "بنر حاوی تبلیغ است", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
                     public void onNoAds() {
                         Toast.makeText(getApplicationContext(), "این سایز بنر حاوی تبلیغ نمی باشد", Toast.LENGTH_LONG).show();
                     }
@@ -57,11 +62,6 @@ public class MainActivity extends Activity {
                     @Override
                     public void onClose() {
                         Toast.makeText(getApplicationContext(),"بنر در حال بسته شدن است",Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onOpen() {
-                        Toast.makeText(getApplicationContext(),"بنر در حال بارگزاری است",Toast.LENGTH_SHORT).show();
                     }
                 });
                 myads.show();
