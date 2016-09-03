@@ -17,6 +17,11 @@ public class Banner300_250 extends Activity {
         largeBanner = (LargeBanner) findViewById(R.id.largeBanner);
         largeBanner.setClickYabAdListener(new ClickYabAdListener() {
             @Override
+            public void onLoadFinished() {
+                Toast.makeText(getApplicationContext(), "بنر حاوی تبلیغ است", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
             public void onNoAds() {
                 Toast.makeText(getApplicationContext(), "این سایز بنر حاوی تبلیغ نمی باشد", Toast.LENGTH_LONG).show();
                 Banner300_250.this.finish();
@@ -29,11 +34,6 @@ public class Banner300_250 extends Activity {
                 Banner300_250.this.finish();
                 startActivity(new Intent(Banner300_250.this, MainActivity.class));
             }
-
-            @Override
-            public void onOpen() {
-                Toast.makeText(getApplicationContext(), "بنر حاوی تبلیغ است", Toast.LENGTH_LONG).show();
-            }
         });
     }
 
@@ -42,7 +42,6 @@ public class Banner300_250 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner300_250);
         initView();
-        Toast.makeText(getApplicationContext(), "بنر در حال بارگزاری است", Toast.LENGTH_SHORT).show();
     }
 
     @Override
