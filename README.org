@@ -85,6 +85,17 @@ You can disable the progress indicator:
   banner.setHasProgressBar(false);
 #+END_SRC
 
+Or using =progress= in XML attribute:
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        progress="false"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
+
 You can provide your own progress indicator drawable:
 
 #+BEGIN_SRC java
@@ -92,7 +103,8 @@ You can provide your own progress indicator drawable:
   banner.setProgressDrawable(getDrawable(R.id.custom_drawable));
 #+END_SRC
 
-You can set a timeout for loading ads. If the ad is not loaded after timeout, =onNoAds()= is called:
+You can set a timeout for loading ads. If the ad is not loaded after timeout, =onNoAds()= is called.
+Default timeout is 10 seconds.
 
 #+BEGIN_SRC java
   XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
@@ -127,6 +139,18 @@ Or using =autohide= in XML attribute:
         token="token"
         /><!-- 320*50 dp -->
   #+END_SRC
+
+You can set onClickListener for banners:
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+
+          }
+      });
+#+END_SRC
 
 * Warning 
 Documents at https://www.clickyab.com/blog/clickyab-android-sdk-document/ are *outdated* and will be updated soon.
