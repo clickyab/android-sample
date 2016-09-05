@@ -77,6 +77,18 @@ You can also add listeners to banners.
   }
 #+END_SRC
 
+You can set onClickListener for banners:
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+
+          }
+      });
+#+END_SRC
+
 * Customizing
 You can disable the progress indicator:
 
@@ -139,18 +151,6 @@ Or using =autohide= in XML attribute:
         token="token"
         /><!-- 320*50 dp -->
   #+END_SRC
-
-You can set onClickListener for banners:
-
-#+BEGIN_SRC java
-  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
-  banner.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-
-          }
-      });
-#+END_SRC
 
 * Warning 
 Documents at https://www.clickyab.com/blog/clickyab-android-sdk-document/ are *outdated* and will be updated soon.
