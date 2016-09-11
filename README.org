@@ -1,12 +1,14 @@
 #+TITLE: ClickYab Sample App for Android
 
+* [[https://github.com/clickyab/android-sample/blob/master/README-fa.org][مستندات فارسی]] 
+
 * How To Add ClickYab SDK to Your Project
 Download the *AAR* library from [[https://github.com/clickyab/android-sample/releases][releases]] and add it to your project:
 
 1. Go to File>New>New Module
 2. Select "Import .JAR/.AAR Package" and click next.
 3. Enter the path to .aar file and click finish.
-4. Go to File>Project Settings (Ctrl+Shift+Alt+S).
+4. Go to File>Project Structure (Ctrl+Shift+Alt+S).
 5. Under "Modules," in left menu, select "app."
 6. Go to "Dependencies tab.
 7. Click the green "+" in the upper right corner.

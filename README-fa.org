@@ -1,0 +1,186 @@
+#+TITLE: راهنمای کتابخانه تبلیغات تلفن همراه کلیک یاب
+
+* اضافه کردن کتابخانه تبلیغات تلفن همراه کلیک یاب
+فایل AAR کتابخانه را از [[https://github.com/clickyab/android-sample/releases][اینجا]] دانلود کنید و به این صورت به پروژه اضافه کنید:
+1. از منوی File و سپس New به New Module بروید.
+   
+   [[./docs/pics/1.png]]
+   
+2. "Import .JAR/.AAR Package" را انتخاب کنید.
+   
+   [[./docs/pics/2.png]]
+   
+3. فایل دانلود شده را انتخاب کنید و Finish را بزنید.
+4. برای اطمینان از اضافه شده به پروژه Project Structure از منوی File را انتخاب کنید.
+   
+   [[./docs/pics/4.png]]
+   
+5. زیر بخش "Modules"  در منوی چپ "app" را انتخاب کنید.
+   
+   [[./docs/pics/5.png]]
+   
+6. به تب "Dependencies" بروید.
+7. دکمه سبز رنگ + را در گوشه سمت راست و بالا بزنید.
+8. "Module Dependency" را انتخاب کنید.
+   
+   [[./docs/pics/8.png]]
+   
+9. ماژول جدید را انتخاب کنید.
+   
+اگر می‌خواهید از کتابخانه با فرمت JAR استفاده کنید می‌توانید آن را از همان بخش دانلود کنید. اگرچه استفاده از کتابخانه به فرمت JAR توصیه نمی‌شود. فرمت AAR فرمت جدیدتری است که توسط گوگل مخصوص اندروید تدارک دیده شده است. توجه داشته باشید فرمت JAR این کتابخانه دارای نشانگر انتظار (Progress Indicator) نیست. اگر چه می‌توانید خودتان نشانگر خود را برای استفاده به کار برید (به بخش سفارشی کردن مراجعه کنید).
+
+همچنین دقت کنید اپ شما اجازه دسترسی INTERNET و ACCESS_NETWORK_STATE را داشته باشد (در فایل AndroidManifest.XML).
+
+#+BEGIN_SRC xml
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+#+END_SRC
+
+* راهنمای استفاده
+یکی از کدهای زیر را براساس اندازه دلخواه به layout جایی که می‌خواهید تبلیغات در آن نمایش داده شود، اضافه کنید و قسمت token را با شناسه‌‌ای که درکلیک یاب به شما داده شده پرکنید.
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
+          
+#+BEGIN_SRC xml
+<com.clickyab.LargeBanner 
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      token="token"
+      /><!-- 300*250 dp -->
+#+END_SRC
+
+#+BEGIN_SRC xml
+<com.clickyab.XlargeBannerPortrait
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        token="token"
+        /><!-- 320*480 dp -->
+#+END_SRC
+
+نمونه تبلیغ:
+
+   [[./docs/pics/ss1.png]]
+
+به این صورت نیز می‌توانید تبلیغات تمام صفحه را نمایش دهید.
+
+#+BEGIN_SRC java
+  ClickYabFullAd banner = new ClickYabFullAd(getContext() , "token");
+  banner.show();
+#+END_SRC
+
+نمونه تبلیغ تمام صفحه:
+
+   [[./docs/pics/ss2.png]]
+
+* اضافه کردن Listener به بنرها
+
+شما می‌توانید لیسنرهای زیر را به بنرها اضافه کنید تا با فراخوانی آنها از وضعیت بنرها مطلع شوید.‍‍
+البته توجه داشته باشید که هر چند دقیقه یک بار یک تبلیغ جدید لود می‌شود، و در هر بار لود شدن تبلیغ جدید، فقط یک بار یکی از متدهای listener فراخوانی می‌شود. یعنی در کل این متدها ممکن است چندین بار فراخوانی شوند و مثلا هر بار لود کامل انجام شود، onLoadFinished فراخوانی می‌شود.
+
+
+#+BEGIN_SRC java
+  largeBanner = (LargeBanner) findViewById(R.id.largeBanner);
+  largeBanner.setClickYabAdListener(new ClickYabAdListener() {
+          @Override
+          public void onLoadFinished() {
+           // هنگامی فراخوانی میشود که لود کردن تبلیغ تمام شده و آماده نمایش است
+          }
+
+          @Override
+          public void onNoAds() {
+           // زمانی فراخوانی میشود که بنر تبلیغی برای نمایش ندارد
+          }
+
+          @Override
+          public void onClose() {
+            // زمانی فراخوانی میشود که کاربر تقاضای بسته شدن بنر را دارد
+          }
+      });
+  }
+#+END_SRC
+
+همچنین می‌توان برای بنرها onClickListener تعریف کرد:
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+
+          }
+      });
+#+END_SRC
+
+* سفارشی سازی
+
+می‌توان نشانگر انتظار (Progress Indicator) را غیر فعال کرد:
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setHasProgressBar(false);
+#+END_SRC
+
+یا از طریق فایل Layout:
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        progress="false"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
+
+شما می‌توانید نشانگر انتظار خودتان را نیز استفاده کنید. برای این منظور به این روش آن را به بنر معرفی کنید:
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setProgressDrawable(getDrawable(R.id.custom_drawable));
+#+END_SRC
+
+اگر تبلیغی بعد از گذشت زمانی لود نشد، متد onNoAds فراخوانی می‌شود. برای تغییر این مدت زمان یا timeout، می‌توانید به روش زیر عمل کنید. مدت زمان پیشفرض timeout ده ثانیه است.
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setTimeOutSeconds(10);
+#+END_SRC
+
+یا از طریق فایل Layout:
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        timeout="10"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
+
+If there is no ads, visibility is automatically changed to =View.GONE= by default. You can change this by setting auto-hide to false;
+
+زمانی که تبلیغی برای نمایش وجود نداشته باشد، و onNoAds فراخوانی شود، به طور خودکار بنر پنهان (GONE) خواهد شد. می‌توانید به روش زیر این رفتار را غیر فعال کنید/
+
+#+BEGIN_SRC java
+  XlargeBannerPortrait banner = (XlargeBannerPortrait) findViewById(R.id.xlargeBannerPortrait);
+  banner.setAutoHide(false);
+#+END_SRC
+
+یا از طریق فایل Layout:
+
+  #+BEGIN_SRC xml
+<com.clickyab.Banner 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        autohide="false"
+        token="token"
+        /><!-- 320*50 dp -->
+  #+END_SRC
+
+* توجه
+مستندات سایت رسمی در آدرس  https://www.clickyab.com/blog/clickyab-android-sdk-document/ به روز نیستند و به زودی به روزآوری خواهند شد.
