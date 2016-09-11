@@ -54,7 +54,8 @@ For fulscreen banner, create one and call the method =show=.
 #+END_SRC
 
 * Adding listeners
-You can also add listeners to banners.
+You can also add listeners to banners. Note that the listeners are called multiple times.
+Ads are reloaded every few minutes and on every reload the listeners are called once.
 
 #+BEGIN_SRC java
   largeBanner = (LargeBanner) findViewById(R.id.largeBanner);
