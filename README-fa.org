@@ -116,7 +116,6 @@
           }
       });
 #+END_SRC
-
 * سفارشی سازی
 
 می‌توان نشانگر انتظار (Progress Indicator) را غیر فعال کرد:
@@ -181,6 +180,25 @@ If there is no ads, visibility is automatically changed to =View.GONE= by defaul
         token="token"
         /><!-- 320*50 dp -->
   #+END_SRC
+
+* مشکلات معمول
+** Only the original thread that created a view hierarchy can touch its views
+به طول معمول تنها از Main Thread  می توان به اجزای UI  دسترسی داشت و تغییری در آنها داد. این خطا موقعی رخ می دهد که شما برای کاری زمانبر (مانند دانلود یک فایل از اینترنت) از یک Thread دیگر استفاده می کنید و در همان Thread  اقدام به تغییر UI کرده اید. ممکن است خودتان قصد تغییر UI را نداشتید اما متدی را فراخوانی کرده این که در نهایت UI را تغییر می دهد (مانند نشان دادن یک تبلیغ).
+
+راه حل این مشکل فراخوانی این متد یا تغییر UI در Main Thread است. برای این کار مانند زیر از =runOnUiThread= استفاده کنید.
+
+#+BEGIN_SRC java
+  runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+              // Stuff that updates UI
+              ClickYabFullAd banner = new ClickYabFullAd(getContext() , "token");
+              banner.show();
+          }
+      });
+#+END_SRC
+
+مستندات این متد در [[https://developer.android.com/reference/android/app/Activity.html#runOnUiThread(java.lang.Runnable)][اینجا]] آمده است.
 
 * توجه
 مستندات سایت رسمی در آدرس  https://www.clickyab.com/blog/clickyab-android-sdk-document/ به روز نیستند و به زودی به روزآوری خواهند شد.
