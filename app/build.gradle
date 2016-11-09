@@ -7,13 +7,12 @@ android {
     defaultConfig {
         applicationId "com.clickyab.cytest"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:24.2.0'
     compile project(':clickyab-1.2')
 }
