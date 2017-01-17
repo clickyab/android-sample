@@ -155,5 +155,21 @@ Or using =autohide= in XML attribute:
         /><!-- 320*50 dp -->
   #+END_SRC
 
+* Proguard Rules
+#+BEGIN_SRC text
+-keepclassmembers class com.clickyab.ClickYabJavascriptInterfaceImpl {
+   public *;
+}
+-keep public interface com.clickyab.ClickYabAdListener {*;}
+-keep class com.clickyab.ClickYabFullAd {
+  public *;
+}
+-keep public class * extends com.clickyab.ClickYabBanner
+-keepclassmembers class * extends com.clickyab.ClickYabBanner {
+ public <init>(android.content.Context);
+ public <init>(android.content.Context, android.util.AttributeSet);
+ public <init>(android.content.Context, android.util.AttributeSet, int);
+#+END_SRC
+
 * Warning 
 Documents at https://www.clickyab.com/blog/clickyab-android-sdk-document/ are *outdated* and will be updated soon.
