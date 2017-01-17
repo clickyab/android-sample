@@ -169,6 +169,7 @@ Or using =autohide= in XML attribute:
  public <init>(android.content.Context);
  public <init>(android.content.Context, android.util.AttributeSet);
  public <init>(android.content.Context, android.util.AttributeSet, int);
+}
 #+END_SRC
 
 * Warning 
