@@ -3,23 +3,37 @@
 * [[https://github.com/clickyab/android-sample/blob/master/README-fa.org][مستندات فارسی]] 
 
 * How To Add ClickYab SDK to Your Project
-Download the *AAR* library from [[https://github.com/clickyab/android-sample/releases][releases]] and add it to your project:
 
-1. Go to File>New>New Module
-2. Select "Import .JAR/.AAR Package" and click next.
-3. Enter the path to .aar file and click finish.
-4. Go to File>Project Structure (Ctrl+Shift+Alt+S).
-5. Under "Modules," in left menu, select "app."
-6. Go to "Dependencies tab.
-7. Click the green "+" in the upper right corner.
-8. Select "Module Dependency"
-9. Select the new module from the list.
+** Add to your dependencies
+   Add the following line to the dependencies in the =build.gradle= file.
+
+   #+BEGIN_SRC groovy
+    compile 'com.clickyab:clickyab-sdk:1.2.8:mainRelease@aar'
+   #+END_SRC
+
+  Make sure to add dependency to the module level build file and not the
+=build.gradle= file in root of your project. Also make sure =jecenter()= is 
+in your repositories.
+
+** Or Manually Add AAR file
+ Download the *AAR* library from [[https://github.com/clickyab/android-sample/releases][releases]] and add it to your project:
+
+ 1. Go to File>New>New Module
+ 2. Select "Import .JAR/.AAR Package" and click next.
+ 3. Enter the path to .aar file and click finish.
+ 4. Go to File>Project Structure (Ctrl+Shift+Alt+S).
+ 5. Under "Modules," in left menu, select "app."
+ 6. Go to "Dependencies tab.
+ 7. Click the green "+" in the upper right corner.
+ 8. Select "Module Dependency"
+ 9. Select the new module from the list.
    
 
-If you need the *JAR* format (not recommended) download it from [[https://github.com/clickyab/android-sample/releases][releases]]. 
-The JAR format does not have the progress indicator by default, but you can provide you own (see /Customizing/).
+** Or Manually Add JAR file
+ If you need the *JAR* format (not recommended) download it from [[https://github.com/clickyab/android-sample/releases][releases]]. 
+ The JAR format does not have the progress indicator by default, but you can provide you own (see /Customizing/).
 
-Remember to add =INTERNET= and =ACCESS_NETWORK_STATE= permissions to =AndroidManifest.XML=.
+ Remember to add =INTERNET= and =ACCESS_NETWORK_STATE= permissions to =AndroidManifest.XML=.
 
 * How to Use
 Add one one the three size of banners to you layout. Remember to put your token.
