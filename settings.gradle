@@ -1,1 +1,1 @@
-include ':app', ':clickyab-1.2'
+include ':app'

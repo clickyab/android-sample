@@ -1,40 +1,52 @@
 #+TITLE: راهنمای کتابخانه تبلیغات تلفن همراه کلیک یاب
 
 * اضافه کردن کتابخانه تبلیغات تلفن همراه کلیک یاب
-فایل AAR کتابخانه را از [[https://github.com/clickyab/android-sample/releases][اینجا]] دانلود کنید و به این صورت به پروژه اضافه کنید:
-1. از منوی File و سپس New به New Module بروید.
-   
-   [[./docs/pics/1.png]]
-   
-2. "Import .JAR/.AAR Package" را انتخاب کنید.
-   
-   [[./docs/pics/2.png]]
-   
-3. فایل دانلود شده را انتخاب کنید و Finish را بزنید.
-4. برای اطمینان از اضافه شده به پروژه Project Structure از منوی File را انتخاب کنید.
-   
-   [[./docs/pics/4.png]]
-   
-5. زیر بخش "Modules"  در منوی چپ "app" را انتخاب کنید.
-   
-   [[./docs/pics/5.png]]
-   
-6. به تب "Dependencies" بروید.
-7. دکمه سبز رنگ + را در گوشه سمت راست و بالا بزنید.
-8. "Module Dependency" را انتخاب کنید.
-   
-   [[./docs/pics/8.png]]
-   
-9. ماژول جدید را انتخاب کنید.
-   
-اگر می‌خواهید از کتابخانه با فرمت JAR استفاده کنید می‌توانید آن را از همان بخش دانلود کنید. اگرچه استفاده از کتابخانه به فرمت JAR توصیه نمی‌شود. فرمت AAR فرمت جدیدتری است که توسط گوگل مخصوص اندروید تدارک دیده شده است. توجه داشته باشید فرمت JAR این کتابخانه دارای نشانگر انتظار (Progress Indicator) نیست. اگر چه می‌توانید خودتان نشانگر خود را برای استفاده به کار برید (به بخش سفارشی کردن مراجعه کنید).
 
-همچنین دقت کنید اپ شما اجازه دسترسی INTERNET و ACCESS_NETWORK_STATE را داشته باشد (در فایل AndroidManifest.XML).
+** به نیازمندیهای اپ خود اضافه کنید
+خط زیر را بخش dependencies در فایل =build.gradle= اضافه کنید.
 
-#+BEGIN_SRC xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-#+END_SRC
+   #+BEGIN_SRC groovy
+    compile 'com.clickyab:clickyab-sdk:1.2.8:mainRelease@aar'
+   #+END_SRC
+
+دقت کنید این نیازمندی را به فایل =build.gralde= که در کف پروژه است اضافه نکنید بلکه به آن که در ماژول اپ شماست اضافه کنید. همچنین دقت کنید =jcenter()= در لیست repositories شما باشد.
+
+** یا فایل AAR را اضافه کنید
+ فایل AAR کتابخانه را از [[https://github.com/clickyab/android-sample/releases][اینجا]] دانلود کنید و به این صورت به پروژه اضافه کنید:
+ 1. از منوی File و سپس New به New Module بروید.
+   
+    [[./docs/pics/1.png]]
+   
+ 2. "Import .JAR/.AAR Package" را انتخاب کنید.
+   
+    [[./docs/pics/2.png]]
+   
+ 3. فایل دانلود شده را انتخاب کنید و Finish را بزنید.
+ 4. برای اطمینان از اضافه شده به پروژه Project Structure از منوی File را انتخاب کنید.
+   
+    [[./docs/pics/4.png]]
+   
+ 5. زیر بخش "Modules"  در منوی چپ "app" را انتخاب کنید.
+   
+    [[./docs/pics/5.png]]
+   
+ 6. به تب "Dependencies" بروید.
+ 7. دکمه سبز رنگ + را در گوشه سمت راست و بالا بزنید.
+ 8. "Module Dependency" را انتخاب کنید.
+   
+    [[./docs/pics/8.png]]
+   
+ 9. ماژول جدید را انتخاب کنید.
+   
+** یا فایل JAR را اضافه کنید.
+ اگر می‌خواهید از کتابخانه با فرمت JAR استفاده کنید می‌توانید آن را از همان بخش دانلود کنید. اگرچه استفاده از کتابخانه به فرمت JAR توصیه نمی‌شود. فرمت AAR فرمت جدیدتری است که توسط گوگل مخصوص اندروید تدارک دیده شده است. توجه داشته باشید فرمت JAR این کتابخانه دارای نشانگر انتظار (Progress Indicator) نیست. اگر چه می‌توانید خودتان نشانگر خود را برای استفاده به کار برید (به بخش سفارشی کردن مراجعه کنید).
+
+ همچنین دقت کنید اپ شما اجازه دسترسی INTERNET و ACCESS_NETWORK_STATE را داشته باشد (در فایل AndroidManifest.XML).
+
+ #+BEGIN_SRC xml
+ <uses-permission android:name="android.permission.INTERNET" />
+ <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+ #+END_SRC
 
 * راهنمای استفاده
 یکی از کدهای زیر را براساس اندازه دلخواه به layout جایی که می‌خواهید تبلیغات در آن نمایش داده شود، اضافه کنید و قسمت token را با شناسه‌‌ای که درکلیک یاب به شما داده شده پرکنید.
@@ -181,6 +193,22 @@ If there is no ads, visibility is automatically changed to =View.GONE= by defaul
         /><!-- 320*50 dp -->
   #+END_SRC
 
+* Proguard Rules
+#+BEGIN_SRC text
+-keepclassmembers class com.clickyab.ClickYabJavascriptInterfaceImpl {
+   public *;
+}
+-keep public interface com.clickyab.ClickYabAdListener {*;}
+-keep class com.clickyab.ClickYabFullAd {
+  public *;
+}
+-keep public class * extends com.clickyab.ClickYabBanner
+-keepclassmembers class * extends com.clickyab.ClickYabBanner {
+ public <init>(android.content.Context);
+ public <init>(android.content.Context, android.util.AttributeSet);
+ public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+#+END_SRC
 * مشکلات معمول
 ** Only the original thread that created a view hierarchy can touch its views
 به طول معمول تنها از Main Thread  می توان به اجزای UI  دسترسی داشت و تغییری در آنها داد. این خطا موقعی رخ می دهد که شما برای کاری زمانبر (مانند دانلود یک فایل از اینترنت) از یک Thread دیگر استفاده می کنید و در همان Thread  اقدام به تغییر UI کرده اید. ممکن است خودتان قصد تغییر UI را نداشتید اما متدی را فراخوانی کرده این که در نهایت UI را تغییر می دهد (مانند نشان دادن یک تبلیغ).
