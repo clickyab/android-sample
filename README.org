@@ -12,7 +12,7 @@
    #+END_SRC
 
   Make sure to add dependency to the module level build file and not the
-=build.gradle= file in root of your project. Also make sure =jecenter()= is 
+=build.gradle= file in root of your project. Also make sure =jcenter()= is 
 in your repositories.
 
 ** Or Manually Add AAR file
