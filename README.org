@@ -33,7 +33,7 @@ in your repositories.
  If you need the *JAR* format (not recommended) download it from [[https://github.com/clickyab/android-sample/releases][releases]]. 
  The JAR format does not have the progress indicator by default, but you can provide you own (see /Customizing/).
 
- Remember to add =INTERNET= and =ACCESS_NETWORK_STATE= permissions to =AndroidManifest.XML=.
+ Remember to add =INTERNET= and =ACCESS_COARSE_LOCATION= permissions to =AndroidManifest.XML=.
 
 * How to Use
 Add one one the three size of banners to you layout. Remember to put your token.
