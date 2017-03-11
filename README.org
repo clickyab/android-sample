@@ -8,7 +8,7 @@
    Add the following line to the dependencies in the =build.gradle= file.
 
    #+BEGIN_SRC groovy
-    compile 'com.clickyab:clickyab-sdk:1.2.9:mainRelease@aar'
+    compile 'com.clickyab:clickyab-sdk:1.2.10:mainRelease@aar'
    #+END_SRC
 
   Make sure to add dependency to the module level build file and not the
