@@ -22,8 +22,8 @@ public class Banner300_250 extends Activity {
             }
 
             @Override
-            public void onNoAds() {
-                Toast.makeText(getApplicationContext(), "این سایز بنر حاوی تبلیغ نمی باشد", Toast.LENGTH_LONG).show();
+            public void onNoAds(int errorCode, String description) {
+                Toast.makeText(getApplicationContext(), description, Toast.LENGTH_LONG).show();
                 Banner300_250.this.finish();
                 startActivity(new Intent(Banner300_250.this, MainActivity.class));
             }
