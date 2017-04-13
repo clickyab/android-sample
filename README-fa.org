@@ -105,7 +105,7 @@
           }
 
           @Override
-          public void onNoAds() {
+          public void onNoAds(int errorCode, String description) {
            // زمانی فراخوانی میشود که بنر تبلیغی برای نمایش ندارد
           }
 

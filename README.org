@@ -82,7 +82,7 @@ Ads are reloaded every few minutes and on every reload the listeners are called 
           }
 
           @Override
-          public void onNoAds() {
+          public void onNoAds(int errorCode, String description) {
            // Called when there is no ads to display
           }
 
