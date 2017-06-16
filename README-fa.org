@@ -6,7 +6,7 @@
 خط زیر را بخش dependencies در فایل =build.gradle= اضافه کنید.
 
    #+BEGIN_SRC groovy
-    compile 'com.clickyab:clickyab-sdk:1.2.10:mainRelease@aar'
+    compile 'com.clickyab:clickyab-sdk:1.3.1:mainRelease@aar'
    #+END_SRC
 
 دقت کنید این نیازمندی را به فایل =build.gralde= که در کف پروژه است اضافه نکنید بلکه به آن که در ماژول اپ شماست اضافه کنید. همچنین دقت کنید =jcenter()= در لیست repositories شما باشد.
