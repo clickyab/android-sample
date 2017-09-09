@@ -14,5 +14,5 @@ android {
 }
 
 dependencies {
-    compile 'com.clickyab:clickyab-sdk:1.3.2:mainRelease@aar'
+    compile 'com.clickyab:clickyab-sdk:1.3.3:mainRelease@aar'
 }
